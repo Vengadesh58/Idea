@@ -18,8 +18,7 @@ async def root():
 
 
 @router.get("/")
-async def get_ideas(db: Session = Depends(get_db), limit: Optional[int] = 10, skip: Optional[int] = 0, search: Optional[str] = " "):
-    print(limit)
+async def get_ideas(db: Session = Depends(get_db), limit: Optional[int] = 99999, skip: Optional[int] = 0, search: Optional[str] = ""):
     # cursor.execute("""SELECT * FROM ideas """)
     # ideas = cursor.fetchall()
     # print(ideas)
