@@ -4,9 +4,6 @@ from sqlalchemy.orm import sessionmaker
 from .config import settings
 
 
-# https://fastapi.tiangolo.com/tutorial/sql-databases/?h=sql
-# SQLAlchemy specific code, as with any other app
-# DATABASE_URL = "sqlite:///./test.db"
 DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}"
 
 engine = create_engine(DATABASE_URL)
