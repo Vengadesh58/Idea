@@ -1,14 +1,19 @@
-from fastapi import FastAPI, Response, status, HTTPException, Depends
+from fastapi import FastAPI
 # import psycopg2
 # from psycopg2.extras import RealDictCursor
-from typing import List
-import time
-from . import models, schemas, utils
-from .database import engine, SessionLocal, get_db
-from sqlalchemy.orm import Session
+from . import models
+from .database import engine
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import ideas, users, auth, comments
+from pydantic_settings import BaseSettings
 
+
+class Settings(BaseSettings):
+    database_password: str = "Welcome123"
+    database_username: str = "postgres"
+
+
+settings = Settings()
 
 # import models
 models.Base.metadata.create_all(bind=engine)
