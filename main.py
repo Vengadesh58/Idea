@@ -5,15 +5,7 @@ from . import models
 from .database import engine
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import ideas, users, auth, comments
-from pydantic_settings import BaseSettings
-
-
-class Settings(BaseSettings):
-    database_password: str = "Welcome123"
-    database_username: str = "postgres"
-
-
-settings = Settings()
+from .config import settings
 
 # import models
 models.Base.metadata.create_all(bind=engine)
