@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
-from pydantic import EmailStr
+from pydantic import EmailStr, conint
 
 # Schema for the API using pydantic model
 
@@ -73,3 +73,8 @@ class CommentsRes(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class Likes(BaseModel):
+    idea_id: int
+    dir: conint(le=1)
