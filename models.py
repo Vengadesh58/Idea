@@ -38,3 +38,19 @@ class Comments(Base):
     createdby = Column(String, nullable=False)
     createdat = Column(TIMESTAMP(timezone=True),
                        nullable=False, server_default=text('now()'))
+
+
+class Likes(Base):
+    __tablename__ = "likes"
+    ideas_id = Column(Integer, ForeignKey(
+        "ideas.id", ondelete="CASCADE"), primary_key=True, nullable=False)
+    user_id = Column(Integer, ForeignKey(
+        "users.id", ondelete="CASCADE"), primary_key=True, nullable=False)
+
+
+class Dislikes(Base):
+    __tablename__ = "dislikes"
+    ideas_id = Column(Integer, ForeignKey(
+        "ideas.id", ondelete="CASCADE"), primary_key=True, nullable=False)
+    user_id = Column(Integer, ForeignKey(
+        "users.id", ondelete="CASCADE"), primary_key=True, nullable=False)
