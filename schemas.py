@@ -78,3 +78,8 @@ class CommentsRes(BaseModel):
 """class Likes(BaseModel):
     ideas_id: int
     dir: conint(le=1)"""
+
+
+class Files(BaseModel):
+    id: int
+    file_base: str

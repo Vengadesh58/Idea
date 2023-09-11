@@ -54,3 +54,14 @@ class Dislikes(Base):
         "ideas.id", ondelete="CASCADE"), primary_key=True, nullable=False)
     user_id = Column(Integer, ForeignKey(
         "users.id", ondelete="CASCADE"), primary_key=True, nullable=False)
+
+
+class Files(Base):
+    __tablename__ = "files"
+
+    fid = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, ForeignKey(
+        "ideas.id", ondelete="CASCADE"), nullable="False")
+    file_base = Column(String, nullable=True)
+    uploaded_at = Column(TIMESTAMP(timezone=True),
+                         nullable=False, server_default=text('now()'))
