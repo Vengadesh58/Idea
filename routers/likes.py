@@ -28,4 +28,4 @@ async def post_likes(db: Session = Depends(get_db), like=schemas.Likes, current_
         db.query(models.Likes).filter(models.Likes.ideas_id ==
                                       like.idea_id, models.Likes.user_id == current_user)
     else:
-        None
+        return {}
