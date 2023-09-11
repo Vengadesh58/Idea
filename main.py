@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from . import models
 from .database import engine
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import ideas, users, auth, comments, likes
+from .routers import ideas, users, auth, comments
 from .config import settings
 
 # import models
@@ -16,7 +16,7 @@ app.include_router(ideas.router)
 app.include_router(users.router)
 app.include_router(auth.router)
 app.include_router(comments.router)
-app.include_router(likes.router)
+# app.include_router(likes.router)
 
 app.add_middleware(
     CORSMiddleware,

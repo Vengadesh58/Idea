@@ -75,6 +75,6 @@ class CommentsRes(BaseModel):
         from_attributes = True
 
 
-class Likes(BaseModel):
-    idea_id: int
-    dir: conint(le=1)
+"""class Likes(BaseModel):
+    ideas_id: int
+    dir: conint(le=1)"""
