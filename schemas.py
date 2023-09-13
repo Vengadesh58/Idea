@@ -15,6 +15,7 @@ class Idea(BaseModel):
     status: str
     createdby: str
     datasources: Optional[str]
+    assignedto: Optional[str]
 
 
 class UpdateStatus(BaseModel):
