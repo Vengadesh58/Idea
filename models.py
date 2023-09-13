@@ -15,6 +15,7 @@ class Ideas(Base):
     contact = Column(String, nullable=True)
     status = Column(String, nullable=False)
     createdby = Column(String, nullable=False)
+    assignedto = Column(String, nullable=True)
     createdat = Column(TIMESTAMP(timezone=True),
                        nullable=False,   server_default=text('now()'))
     datasources = Column(String, nullable=True)

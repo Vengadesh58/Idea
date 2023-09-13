@@ -18,12 +18,12 @@ async def root():
 
 
 @router.get("/")
-async def get_ideas(db: Session = Depends(get_db), limit: Optional[int] = 99999, skip: Optional[int] = 0, filter: Optional[str] = ""):
+async def get_ideas(db: Session = Depends(get_db), filter: Optional[str] = ""):
     # cursor.execute("""SELECT * FROM ideas """)
     # ideas = cursor.fetchall()
     # print(ideas)
     ideas = db.query(models.Ideas).order_by(
-        models.Ideas.id).filter(models.Ideas.status.contains(filter)).limit(limit).offset(skip).all()
+        models.Ideas.id).filter(models.Ideas.status.contains(filter)).all()
     return ideas
 
 
