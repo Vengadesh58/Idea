@@ -4,7 +4,7 @@ from ..database import get_db
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, File, UploadFile
 from typing import Annotated
-
+from base64 import b64decode
 router = APIRouter(
     prefix="/files", tags=['files']
 )
@@ -39,3 +39,18 @@ async def create_files(Comments: schemas.Files, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_post)
     return new_post
+
+
+@router.get("/{id}")
+async def get_files(id: int, response: Response, db: Session = Depends(get_db)):
+    comment = db.query(models.Files).filter(models.Files.id == id).first()
+
+    if not comment:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"idea id {id} is not available")
+
+    base_64 = comment
+    byte = b64decode(base_64, validate=True)
+
+    if byte[0:4] != b'%PDF':
+        raise ValueError("Missing the pdf file signature")
