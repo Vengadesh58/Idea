@@ -114,7 +114,7 @@ async def update_status(id: int, idea: schemas.UpdateStatus, db: Session = Depen
 
 
 @router.post("/uploadfile/")
-async def create_upload_file(file: UploadFile):
+async def create_upload_file(file: File):
 
     # path = "C:\\Users\\I355833\\Documents\\GitHub\\Idea\\venv\\Files\\"
     name = file.filename
