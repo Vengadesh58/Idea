@@ -115,15 +115,4 @@ async def update_status(id: int, idea: schemas.UpdateStatus, db: Session = Depen
 
 @router.post("/uploadfile/")
 async def create_upload_file(file: File):
-
-    # path = "C:\\Users\\I355833\\Documents\\GitHub\\Idea\\venv\\Files\\"
-    name = file.filename
-    print(file.filename)
-    filename = name
-    contents = file.file.read()
-    print(contents)
-
-    with open(filename, 'wb') as f:
-        shutil.copyfileobj(file.file, f)
-
-    return {"filename": file.filename}
+    print(type(file))
