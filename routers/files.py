@@ -23,5 +23,6 @@ async def create_upload_file(file: UploadFile = File(...)):
 
 @router.get("/downloadfile/")
 def download_file():
-    file_path = "path_to_your_file.pdf"  # Replace with the actual path to your file
+    # Replace with the actual path to your file
+    file_path = "/data/fastapi/sample.pdf"
     return FileResponse(file_path, headers={"Content-Disposition": "attachment"})
