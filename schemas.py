@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
 from pydantic import EmailStr, conint
+from fastapi import UploadFile
 
 # Schema for the API using pydantic model
 
@@ -84,3 +85,7 @@ class CommentsRes(BaseModel):
 class Files(BaseModel):
     id: int
     file_base: str
+
+
+class newFile(BaseModel):
+    file: UploadFile

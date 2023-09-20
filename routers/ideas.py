@@ -115,4 +115,5 @@ async def update_status(id: int, idea: schemas.UpdateStatus, db: Session = Depen
 
 @router.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
-    print(type(file))
+
+    return {"message": f"Successfully uploaded {file.filename}"}
