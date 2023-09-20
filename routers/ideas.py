@@ -111,9 +111,3 @@ async def update_status(id: int, idea: schemas.UpdateStatus, db: Session = Depen
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Idea id {id} is not available")
-
-
-@router.post("/uploadfile/")
-async def create_upload_file(file: UploadFile):
-
-    return {"message": f"Successfully uploaded {file.filename}"}
