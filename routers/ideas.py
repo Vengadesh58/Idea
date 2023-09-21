@@ -34,7 +34,7 @@ async def get_ideas(db: Session = Depends(get_db), filter: Optional[str] = ""):
 
 
 # response_model=schemas.response)
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.Response)
+@router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_idea(Idea: schemas.Idea, db: Session = Depends(get_db)):
     # cursor.execute(
     # """ INSERT INTO ideas (shortname,define,objective,businessvalue,contact,status,createdby) VALUES(%s,%s,%s,%s,%s,%s,%s) RETURNING * """, (Idea.shortName, Idea.define, Idea.objective, Idea.businessValue, Idea.contacts, Idea.status, Idea.createdby))
