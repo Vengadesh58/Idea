@@ -28,6 +28,7 @@ class Response(BaseModel):
     define: str
     contact: str
     status: str
+    id: int
 
     class Config:
         from_attributes = True

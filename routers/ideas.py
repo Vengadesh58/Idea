@@ -44,7 +44,7 @@ async def create_idea(Idea: schemas.Idea, db: Session = Depends(get_db)):
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
-    return new_post
+    return new_post.id
 
 
 @router.get("/{id}",)
