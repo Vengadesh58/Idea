@@ -63,6 +63,6 @@ class Files(Base):
     fid = Column(Integer, primary_key=True, nullable=False)
     id = Column(Integer, ForeignKey(
         "ideas.id", ondelete="CASCADE"), nullable="False")
-    file_base = Column(String, nullable=True)
+    filename = Column(String, nullable=True)
     uploaded_at = Column(TIMESTAMP(timezone=True),
                          nullable=False, server_default=text('now()'))

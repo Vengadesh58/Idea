@@ -88,4 +88,11 @@ class Files(BaseModel):
 
 
 class newFile(BaseModel):
+    id: int
     file: UploadFile
+
+
+class EmailRequest(BaseModel):
+    subject: str
+    message: str
+    to_email: str
