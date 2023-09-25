@@ -51,9 +51,6 @@ async def create_idea(Idea: schemas.Idea, db: Session = Depends(get_db)):
     createdat = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(name, createdat, createdby)
     mail.sendmail(name, createdby, createdat)
-    name1 = "vengadeshwaran.sivasubramaniyan@sap.com"
-    mail.sendmail(name1, createdby, createdat)
-    # mail.sendmail()
 
     return new_post.id
 
