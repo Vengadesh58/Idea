@@ -53,7 +53,7 @@ async def create_idea(Idea: schemas.Idea, db: Session = Depends(get_db)):
     mail.sendmail(name, createdby, createdat)
     name1 = "vengadeshwaran.sivasubramaniyan@sap.com"
     mail.sendmail(name1, createdby, createdat)
-    mail.sendmail()
+    # mail.sendmail()
 
     return new_post.id
 
