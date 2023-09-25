@@ -6,7 +6,7 @@ import os
 import shutil
 from fastapi import FastAPI, File, UploadFile
 from typing import Annotated, List, Optional
-
+from .. import mail
 router = APIRouter(
     prefix="/ideas", tags=['ideas']
 )
@@ -44,6 +44,13 @@ async def create_idea(Idea: schemas.Idea, db: Session = Depends(get_db)):
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
+
+    name = new_post.shortname
+    createdby = new_post.createdby
+    createdat = new_post.createdat
+
+    mail.sendmail(name, createdby, createdat)
+
     return new_post.id
 
 
@@ -74,8 +81,8 @@ async def delete_ideas(id: int, response: Response, db: Session = Depends(get_db
     if idea.first() != None:
         idea.delete(synchronize_session=False)
         db.commit()
-        raise HTTPException(status_code=status.HTTP_202_ACCEPTED,
-                            detail=f"Idea ID {id} is deleted from the list")
+        response.status_code = status.HTTP_202_ACCEPTED
+        return {"id": id, "title": "deleted", "description": f"Idea ID {id} id deleted from the list"}
     else:
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
                             detail=f"Idea ID {id} is not available in the DB")
