@@ -7,6 +7,7 @@ import shutil
 from fastapi import FastAPI, File, UploadFile
 from typing import Annotated, List, Optional
 from .. import mail
+from datetime import datetime
 router = APIRouter(
     prefix="/ideas", tags=['ideas']
 )
@@ -47,9 +48,12 @@ async def create_idea(Idea: schemas.Idea, db: Session = Depends(get_db)):
 
     name = new_post.shortname
     createdby = new_post.createdby
-    createdat = new_post.createdat
-
+    createdat = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(name, createdat, createdby)
     mail.sendmail(name, createdby, createdat)
+    name1 = "vengadeshwaran.sivasubramaniyan@sap.com"
+    mail.sendmail(name1, createdby, createdat)
+    mail.sendmail()
 
     return new_post.id
 
